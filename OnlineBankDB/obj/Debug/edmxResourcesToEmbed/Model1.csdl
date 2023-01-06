@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineBankDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Account_Id" />
+    </Key>
+    <Property Name="Account_Id" Type="Int32" Nullable="false" />
+    <Property Name="Balance" Type="Int32" Nullable="false" />
+    <Property Name="Account_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Banks" Relationship="OnlineBankDB.AccountBank" FromRole="Account" ToRole="Bank" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="Bank_Id" />
+    </Key>
+    <Property Name="Bank_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="OnlineBankDB.AccountBank" FromRole="Bank" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="Branch_Id" />
+    </Key>
+    <Property Name="Branch_Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Coustomer">
+    <Key>
+      <PropertyRef Name="Cou_Id" />
+    </Key>
+    <Property Name="Cou_Id" Type="Int32" Nullable="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Phone" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Loan">
+    <Key>
+      <PropertyRef Name="Loan_Id" />
+    </Key>
+    <Property Name="Loan_Id" Type="Int32" Nullable="false" />
+    <Property Name="Loan_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pay">
+    <Key>
+      <PropertyRef Name="Pay_No" />
+    </Key>
+    <Property Name="Pay_No" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="OnlineBankDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Banks" EntityType="Self.Bank" />
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="Coustomers" EntityType="Self.Coustomer" />
+    <EntitySet Name="Loans" EntityType="Self.Loan" />
+    <EntitySet Name="Pays" EntityType="Self.Pay" />
+    <AssociationSet Name="AccountBank" Association="OnlineBankDB.AccountBank">
+      <End Role="Account" EntitySet="Accounts" />
+      <End Role="Bank" EntitySet="Banks" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="AccountBank">
+    <End Type="OnlineBankDB.Account" Role="Account" Multiplicity="*" />
+    <End Type="OnlineBankDB.Bank" Role="Bank" Multiplicity="*" />
+  </Association>
+</Schema>

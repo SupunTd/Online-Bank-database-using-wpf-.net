@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="OnlineBankDBStoreContainer" CdmEntityContainer="OnlineBankDBEntities">
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="OnlineBankDB.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Account_Type" ColumnName="Account_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="OnlineBankDB.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="Bank_Id" ColumnName="Bank_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="OnlineBankDB.Branch">
+        <MappingFragment StoreEntitySet="Branch">
+          <ScalarProperty Name="Branch_Id" ColumnName="Branch_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Coustomers">
+      <EntityTypeMapping TypeName="OnlineBankDB.Coustomer">
+        <MappingFragment StoreEntitySet="Coustomer">
+          <ScalarProperty Name="Cou_Id" ColumnName="Cou_Id" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loans">
+      <EntityTypeMapping TypeName="OnlineBankDB.Loan">
+        <MappingFragment StoreEntitySet="Loan">
+          <ScalarProperty Name="Loan_Id" ColumnName="Loan_Id" />
+          <ScalarProperty Name="Loan_Type" ColumnName="Loan_Type" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pays">
+      <EntityTypeMapping TypeName="OnlineBankDB.Pay">
+        <MappingFragment StoreEntitySet="Pay">
+          <ScalarProperty Name="Pay_No" ColumnName="Pay_No" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

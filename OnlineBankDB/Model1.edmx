@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OnlineBankDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Account_Id" />
+          </Key>
+          <Property Name="Account_Id" Type="int" Nullable="false" />
+          <Property Name="Balance" Type="int" Nullable="false" />
+          <Property Name="Account_Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Bank_Id" />
+          </Key>
+          <Property Name="Bank_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Branch_Id" />
+          </Key>
+          <Property Name="Branch_Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coustomer">
+          <Key>
+            <PropertyRef Name="Cou_Id" />
+          </Key>
+          <Property Name="Cou_Id" Type="int" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Phone" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="Loan_Id" />
+          </Key>
+          <Property Name="Loan_Id" Type="int" Nullable="false" />
+          <Property Name="Loan_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pay">
+          <Key>
+            <PropertyRef Name="Pay_No" />
+          </Key>
+          <Property Name="Pay_No" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OnlineBankDBStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coustomer" EntityType="Self.Coustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loan" EntityType="Self.Loan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pay" EntityType="Self.Pay" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OnlineBankDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Account_Id" />
+          </Key>
+          <Property Name="Account_Id" Type="Int32" Nullable="false" />
+          <Property Name="Balance" Type="Int32" Nullable="false" />
+          <Property Name="Account_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Banks" Relationship="OnlineBankDB.AccountBank" FromRole="Account" ToRole="Bank" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Bank_Id" />
+          </Key>
+          <Property Name="Bank_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Accounts" Relationship="OnlineBankDB.AccountBank" FromRole="Bank" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Branch_Id" />
+          </Key>
+          <Property Name="Branch_Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coustomer">
+          <Key>
+            <PropertyRef Name="Cou_Id" />
+          </Key>
+          <Property Name="Cou_Id" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Phone" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loan">
+          <Key>
+            <PropertyRef Name="Loan_Id" />
+          </Key>
+          <Property Name="Loan_Id" Type="Int32" Nullable="false" />
+          <Property Name="Loan_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pay">
+          <Key>
+            <PropertyRef Name="Pay_No" />
+          </Key>
+          <Property Name="Pay_No" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="OnlineBankDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Coustomers" EntityType="Self.Coustomer" />
+          <EntitySet Name="Loans" EntityType="Self.Loan" />
+          <EntitySet Name="Pays" EntityType="Self.Pay" />
+          <AssociationSet Name="AccountBank" Association="OnlineBankDB.AccountBank">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="Bank" EntitySet="Banks" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="AccountBank">
+          <End Type="OnlineBankDB.Account" Role="Account" Multiplicity="*" >
+          </End>
+          <End Type="OnlineBankDB.Bank" Role="Bank" Multiplicity="*" >
+          </End>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OnlineBankDBStoreContainer" CdmEntityContainer="OnlineBankDBEntities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="OnlineBankDB.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Account_Type" ColumnName="Account_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="OnlineBankDB.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Bank_Id" ColumnName="Bank_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="OnlineBankDB.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="Branch_Id" ColumnName="Branch_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coustomers">
+            <EntityTypeMapping TypeName="OnlineBankDB.Coustomer">
+              <MappingFragment StoreEntitySet="Coustomer">
+                <ScalarProperty Name="Cou_Id" ColumnName="Cou_Id" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loans">
+            <EntityTypeMapping TypeName="OnlineBankDB.Loan">
+              <MappingFragment StoreEntitySet="Loan">
+                <ScalarProperty Name="Loan_Id" ColumnName="Loan_Id" />
+                <ScalarProperty Name="Loan_Type" ColumnName="Loan_Type" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pays">
+            <EntityTypeMapping TypeName="OnlineBankDB.Pay">
+              <MappingFragment StoreEntitySet="Pay">
+                <ScalarProperty Name="Pay_No" ColumnName="Pay_No" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,12 @@
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\OnlineBankDB.mdf
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\OnlineBankDB_log.ldf
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\OnlineBankDB.exe.config
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\OnlineBankDB.exe
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\OnlineBankDB.pdb
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\EntityFramework.dll
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\bin\Debug\EntityFramework.xml
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\obj\Debug\OnlineBankDB.csproj.AssemblyReference.cache
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\obj\Debug\OnlineBankDB.csproj.CoreCompileInputs.cache
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\obj\Debug\OnlineBankDB.csproj.CopyComplete
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\obj\Debug\OnlineBankDB.exe
+C:\Users\WCT\Desktop\Academic\4\GUI\GUI Assignment\2\New folder\OnlineBankDB\obj\Debug\OnlineBankDB.pdb
